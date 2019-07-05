@@ -6,6 +6,8 @@ import { ButtonContainer } from './Button';
 import Searchbar from './Searchbar';
 import login from './login'
 import SignUp from './SignUp'
+import ItemList from './ItemList'
+
 
 export default class Navbar extends Component {
 render() {
@@ -13,13 +15,13 @@ render() {
             
         <nav className="navbar navbar-expand-sm bg-light navbar-lightpx-sm-5">
             
-    <Link to='/'> PAINTINGS</Link>
+    <Link to='/'>PAINTINGS</Link>
 
    <Link to='/SignUp' className="ml-auto">SignUp</Link>
 
 <Link to="/login" className="ml-auto">Login</Link>
 
-<Searchbar/>
+<Searchbar Search={this.props.Search}/>
 
 <Link to='/cart' className="ml-auto">
     <ButtonContainer>

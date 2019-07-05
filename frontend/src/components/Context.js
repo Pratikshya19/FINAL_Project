@@ -1,76 +1,73 @@
-import React, { Component } from 'react'
+// import React, { Component } from 'react'
 // import Details from './Details'
-// import Item from './Item'
+// import ItemList from './ItemList'
+// import Navbar from './Navbar'
+// import Cart from './Cart'
 
-const ProductContext = React.createContext();
+// // const ProductContext = React.createContext();
 
-
-//Provider
-//Consumer
-class ProductProvider extends Component {
-    constructor(){
-        super()
-        this.state = {
-         paintings: [],
-          isLoading: false,
-          displaypaintings:[],
-          inCart: false,
-          total:0,
-          count:0,
-          selecteditem: {}
-        }
-      }
+// class Context extends Component {
+//     constructor(){
+//         super()
+//         this.state = {
+//          paintings: [],
+//           isLoading: false,
+//           displaypaintings:[],
+//           inCart: false,
+//           total:0,
+//           count:0,
+//           selecteditem: {}
+//         }
+//       }
       
 
 
 
-     componentDidMount(){
-        fetch(`http://localhost:3000/items`)
-        .then(res => res.json())
-        .then(data => {
-          console.log(data)
-        this.setState({
-          paintings: data,
-          displaypaintings: data,
-          isLoading: false,
+//      componentDidMount(){
+//         fetch(`http://localhost:3000/items`)
+//         .then(res => res.json())
+//         .then(data => {
+          
+//           console.log(data)
+//           debugger
+//         this.setState({
+//           paintings: data,
+//           displaypaintings: data,
+//           isLoading: false,
          
-        })
-      })
-      }
+//         })
+//       })
+//       }
 
       
 
-handleDetail = (painting) => {
-  console.log("clicked:",painting)
+// handleDetail = (painting) => {
+//   console.log("clicked:",painting)
 
-   this.setState({
-     ...this.state,
-     selecteditem: painting
-   })
+//    this.setState({
+//      ...this.state,
+//      selecteditem: painting
+//    })
   
 
    
-}
+// }
 
-addToCart = () => {
-console.log('hello from add to cart');
-}
+// addToCart = () => {
+// console.log('hello from add to cart');
+// }
 
-    render() {
-        return (
-            <ProductContext.Provider value={{
-                ...this.state, 
-                handleDetail: this.handleDetail,
-                addToCart: this.addToCart,
+//     render() {
+//         return (
+//             <ItemList displaypaintings={this.state.displaypaintings} handleDetail={this.handleDetail} addToCart={this.addToCart}/> 
                 
-            }}>
-              {this.props.children}
-            </ProductContext.Provider>
+           
+      
             
-        )
-    }
+//         )
+//     }
    
-}
-const ProductConsumer = ProductContext.Consumer;
+// }
 
-export {ProductProvider,ProductConsumer};
+
+// export default Context;

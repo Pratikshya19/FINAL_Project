@@ -6,10 +6,12 @@ Rails.application.routes.draw do
 
   resources :cart_items, :categories, :customers, :items, :purchases, :shopping_carts
 
-  post '/login', to: 'auth#create'
+  post '/login', to: 'auth#login'
 get '/profile', to: 'customers#profile' 
-post '/SignUp', to: 'auth#create'
-  
-  #   end
-  # end
+post '/SignUp', to: 'customers#create'
+get '/Cart', to: 'cart_items#index'
+post '/cart_Items', to: 'cart_items#create'
+post '/purchase', to: 'purchases#create'
+
+ 
 end

@@ -45,6 +45,18 @@ body {
   text-allign: center;
   flex-direction: column;
 }
+.image-container {
+  margin-right: 30;
+  max-width: 40%;
+  border: 10px solid;
+  display: block;
+}
+
+.column-half-2 {
+  display: table-cell;
+  padding: 25px;
+  float: right;
+}
 
 @keyframes App-logo-spin {
   from {

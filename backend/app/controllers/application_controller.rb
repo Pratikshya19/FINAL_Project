@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::API
     before_action :check_authentication
+    # , only: [:purchases, :customers[:show, :delete, :profile]
 
    def encode_token(payload)
     JWT.encode(payload,'app_wide_secret_for_every_user')
@@ -11,7 +12,7 @@ class ApplicationController < ActionController::API
 
     def current_customer
     if decoded_token
-    customer_id = decoded_token["customer_id"]
+    customer_id = decoded_token[0]["customer_id"]
     customer = Customer.find(id: customer_id)
     end
     end
@@ -36,9 +37,7 @@ class ApplicationController < ActionController::API
     !!current_customer
   end
 
-
-
-def authorized
-  render json: { message: 'Please log in' }, status: :unauthorized unless logged_in?
-end
+# def authorized
+#   render json: { message: 'Please log in' }, status: :unauthorized unless logged_in?
+# end
 end

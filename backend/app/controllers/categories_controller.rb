@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
 
-    skip_before_action :check_authentication, only: [:index, :show]
+    skip_before_action :check_authentication
 
 
     def index

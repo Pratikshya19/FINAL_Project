@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   skip_before_action :check_authentication
 
   
-def index
+      def index
         @items = Item.all
         render json: @items
       end
@@ -11,7 +11,11 @@ def index
           @item = Item.find(params[:id])
           render json: @item
       end
-  
+
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+  end
 #   def add_to_cart
 #         @item = Item.find(params[:id])
 #         current_cart << @item.id

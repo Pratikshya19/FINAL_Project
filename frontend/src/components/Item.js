@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { ProductConsumer } from './Context'
+// import { ProductConsumer } from './Context'
 // import PropTypes from 'prop-types';
 import Details from './Details';
 
 export default class Item extends Component {
 render() {
-    console.log(this.props)
-const {id,name,price,image_url,artist} = this.props.item;
+    console.log(this.props.item)
+// const {id,name,price,image_url,artist} = this.props.item;
         return (
 
             <ItemWrapper className="col-9 mx-auto col-md-6 col-lg-3">
@@ -22,12 +22,12 @@ const {id,name,price,image_url,artist} = this.props.item;
         <Link to='/details'>
           
             <div id="main-border">
-       <img src={`../../Pictures/${image_url}`} alt="Product" className="card-img-top"/>
+       <img src={`../../Pictures/${this.props.item.image_url}`} alt="Product" className="card-img-top"/>
             <div className="card-footer d-flex justify-content-between">
                 <p className="align-self-center mb-0">
-{name}
+{this.props.item.name}
                 </p>
-              <p><span className="mr-1">${price}</span></p>
+              <p><span className="mr-1">${this.props.item.price}</span></p>
               
               
             </div>
