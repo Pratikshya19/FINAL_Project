@@ -16,10 +16,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.destroy
   end
-#   def add_to_cart
-#         @item = Item.find(params[:id])
-#         current_cart << @item.id
-#         render :index
-#   end
+
+  
 
 end

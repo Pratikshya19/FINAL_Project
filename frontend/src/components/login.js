@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import Title from './Title'
+import { Link } from 'react-router-dom';
+import { Col, Button, Container } from 'reactstrap';
 
 export default class login extends Component {
     state = {
         name: "",
-        // password: "",
-        // currentCustomer: {}
+        
       };
   
+
+
       componentDidMount() {
         const token = localStorage.token;
         console.log(token)
@@ -51,13 +54,15 @@ export default class login extends Component {
         })
         .then(res => res.json())
         .then(data => {
+          // debugger
+          localStorage.setItem("customer",data.customerId)
             console.log(data)
 if (!data.error){
     localStorage.token = data.token;
     
     this.setState({
         name: data.name
-
+    
       });
       
 }
@@ -74,15 +79,53 @@ if (!data.error){
 
     render() {
         return(
-            <div>
-                <form onSubmit={this.login}>
-                    <input type="text" name="name" placeholder="Username"/>
-                    <input type="password" name="password" placeholder="Password"/>
-                    <input type="submit" value="login"/>
-                </form>
-                <Title name={this.state.name}/>
-            </div>
-        )
-    }
+ <Container>
+        <Col sm="12" md={{ size: 6, offset: 3 }}>
+      <form
+          className="form-signin lower-content"
+           onSubmit={this.login}>
+  <h1 className="h3 mb-3 font-weight-normal">Login</h1>
+ <label className="sr-only">Username</label>
+ <input
+              className="form-control"
+              type="text"
+              name="name"
+              placeholder="Username"
 
-}
+            />
+            <br />
+
+            <input
+              className="form-control"
+              type="password"
+              name="name"
+              placeholder="Password"/>
+            <br />
+
+            <Button
+              className="btn btn-lg btn-primary btn-block white-button"
+              type="submit">
+              Log In
+            </Button>
+          </form>
+          <Title name={this.state.name}/>
+          <br />
+          Or <Link to="/Signup">Create Account</Link>
+        </Col>
+        </Container>
+         
+    );
+  }
+} 
+
+
+  //            <div>
+  //            <form onSubmit={this.login}>
+  //                <input type="text" name="name" placeholder="Username"/>
+  //      <input type="password" name="password" placeholder="Password"/>
+  //     <input type="submit" value="login"/>
+  //  </form>
+  //  <Title name={this.state.name}/>
+  //       </div> )}
+        
+  // }

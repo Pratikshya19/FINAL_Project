@@ -6,14 +6,13 @@ class ShoppingCartsController < ApplicationController
     
     def show
         @shopping_cart = ShoppingCart.find(params[:id])
-        render json: @shopping_cart
+        @cart_items = @shopping_cart.cart_items
+        render json: {shopping_cart: @shopping_cart, cart_items: @cart_items}
     end
-
-
-
 
 
     def show_cart
         @total_price = 0.0
+        @cartItem = CartItem.find
       end
 end

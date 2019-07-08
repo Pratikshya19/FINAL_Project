@@ -56,7 +56,17 @@ body {
   display: table-cell;
   padding: 25px;
   float: right;
+  
 }
+
+.center-fit {
+  float: left; 
+ padding: 0 20px 20px 0;
+  max-width: 89%;
+  max-height: 89%;
+  margin: 30px 0px;
+}
+
 
 @keyframes App-logo-spin {
   from {

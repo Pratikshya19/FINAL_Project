@@ -10,26 +10,59 @@ import Cart from './Cart'
 import DefaultPage from './DefaultPage'
 import login from './login'
 import SignUp from './SignUp'
-
+import Home from './Home'
 
 export default class App extends Component {
-  
-
-
   constructor(){
     super()
     this.state = {
      paintings: [],
       isLoading: false,
       displaypaintings:[],
-      inCart:false,
-      total:0,
-      cartSubTotal:0,
       selecteditem: {},
-      CartItems: []
+      // inCart:false,
+      // total:0,
+      // cartSubTotal:0,
+      
+      // CartItems: []
     }
   }
   
+componentWillMount(){
+  if(localStorage.getItem('cartItems')){
+    this.setState({CartItems: JSON.parse(localStorage.getItem('cartItems'))});
+  }
+}
+
+// handleRemoveFromCart = (e,item) => {
+
+// let CartItems = this.state.CartItems.filter(a => a.id !== item.id);
+
+// localStorage.setItem('CartItems', JSON.stringify(CartItems));
+// }
+
+// handleAddToCart = (e,item) => {
+
+//   this.setState({
+
+
+//   })
+// }
+
+// addToCart = (id) => {
+//   fetch('http://localhost:3000/cart_Items', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify({
+//       item_id: this.state.selecteditem.id,
+//       shopping_cart_id: 1,
+  
+//     })
+//   })
+//   } 
+
 Search = (event) => {
   let value = event.target.value
   console.log(event.target.value)
@@ -44,6 +77,7 @@ Search = (event) => {
 }else{
   this.setState({displaypaintings:this.state.paintings})
   }}
+
 
 filter = (e) => {
   let x
@@ -60,23 +94,18 @@ this.setState({displaypaintings:x})
 
 }
 
-
  componentDidMount(){
     fetch(`http://localhost:3000/items`)
     .then(res => res.json())
     .then(data => {
-      
-      console.log(data)
-      
+       console.log(data)
     this.setState({
       paintings: data,
       displaypaintings: data,
-      isLoading: false,
-
-     
-    })
+      isLoading: false,})
   })
   }
+
   handleDetail = (painting) => {
     console.log("clicked:",painting.id)
   
@@ -86,57 +115,28 @@ this.setState({displaypaintings:x})
      })
   }
   
-  Subtotal = () => {
 
-    this.setState({
-      ...this.state,
-      
-    })
-  }   
-  
-  
-  // addToCart = (painting) => {
-  // console.log('hello from add to cart',painting);
-  // this.setState({
-  //   ...this.state,
-  //   addedItems: painting
+//   getItem = (id) => {
+//     const item = this.state.paintings.find(item => item.id === id)
+//     return item
+//   }
 
-  // })
-  // }
+// addTotal = () => {
+// let subtotal = 0;
+// // this.state.CartItems(item => (subtotal += ))
+// }
 
-  
-
-
-
-  getItem = (id) => {
-    const item = this.state.paintings.find(item => item.id === id)
-    return item
-  }
-
-
-clearCart = () => {
-this.setState({
-  CartItems:[]
-})
-
-}
-
-
-addTotal = () => {
-let subtotal = 0;
-// this.state.CartItems(item => (subtotal += ))
-}
-
-
- 
    render(){
     return(<div>
   <Navbar Search={this.Search} />
   <Filter filter={this.filter} />
   <Switch>
+ {/* <Route exact path="/" render={ () => <Home /> }/>  */}
+
+
   <Route exact path="/" render={ () => <ItemList displaypaintings={this.state.displaypaintings} handleDetail={this.handleDetail} addToCart={this.addToCart}/> }/>
   
-  <Route path="/details" render={ () => <Details item={this.state.selecteditem} inCart={this.state.inCart} addToCart={this.props.addToCart} addedItems={this.state.CartItems}  getItem={this.getItem}/> }/>
+  <Route path="/details" render={ () => <Details item={this.state.selecteditem} inCart={this.state.inCart} addToCart={this.addToCart}/> }/>
 
   <Route path="/cart" component={Cart}/>
   <Route path="/login" component={login} />

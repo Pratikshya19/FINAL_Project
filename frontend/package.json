@@ -9,6 +9,7 @@
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
     "react-signup-login-component": "^1.2.0",
+    "reactstrap": "^8.0.0",
     "styled-components": "^4.3.2"
   },
   "scripts": {

@@ -5,13 +5,13 @@ Rails.application.routes.draw do
   #   namespace :v1 do
 
   resources :cart_items, :categories, :customers, :items, :purchases, :shopping_carts
-
+get '/customers/:id/items', to: 'customers#cart_items'
   post '/login', to: 'auth#login'
 get '/profile', to: 'customers#profile' 
 post '/SignUp', to: 'customers#create'
 get '/Cart', to: 'cart_items#index'
 post '/cart_Items', to: 'cart_items#create'
 post '/purchase', to: 'purchases#create'
-
- 
+get '/cart_Items', to: 'cart_items#index'
+ get '/Cartitems', to: 'cart_items#addtocart'
 end

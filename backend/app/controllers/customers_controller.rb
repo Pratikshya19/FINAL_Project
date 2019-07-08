@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-  skip_before_action :check_authentication, only: [:create]
+  skip_before_action :check_authentication, only: [:create, :cart_items]
 
 def index
   customers = Customer.all 
@@ -32,6 +32,16 @@ end
 def profile
     render json: current_customer
  end
+
+def cart_items
+  # byebug
+  @customer = Customer.find(params[:id])
+
+  @cart = @customer.shopping_cart
+  @items = @cart.items
+
+  render json: {items: @items}
+end
 
 private
 def customer_params

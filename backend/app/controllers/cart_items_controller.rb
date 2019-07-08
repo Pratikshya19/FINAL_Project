@@ -1,38 +1,42 @@
 class CartItemsController < ApplicationController
     skip_before_action :check_authentication
+    before_action :cart_item_params, only: [:create]
     
     def index
-        @cart_items = Cart_Item.all
+        @cart_items = CartItem.all
         render json: @cart_items
     end
 
     def create
-      @cart_item = Cart_Item.create(cart_item_params)
+      # byebug
+      @customer = Customer.find(params[:customer_id])
+      @shopping_cart = @customer.shopping_cart
+      @cart_item = CartItem.create(shopping_cart_id: @shopping_cart.id, item_id: params[:item_id])
     render json: @cart_item 
     end
 
+    
 def show
-    @cart_item = Cart_Item.find(params[:id])
+    @cart_item = CartItem.find(params[:id])
+    
     render json: @cart_item 
 end
 
-# def update
-#   @cart = Cart.find(cart_item_params)
-# byebug
-
+# def addtocart
+#   @customer = Customer.find(params[:customer_id])
+#   @shopping_cart = @customer.shopping_cart
+#   @cart_item = CartItem.find(shopping_cart_id: @shopping_cart.id, item_id: params[:item_id])
 # end
 
-
-
 def delete
-    @cart_item = Cart_Item.find(params[:id])
+    @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
     render json: { status: 200, msg: "Item has been deleted." }
   end
 
 private
 def cart_item_params
-params.permit(:item_id, :shopping_cart_id)
+params.require(:cart_item).permit(:item_id, :shopping_cart_id)
 end
 
 end

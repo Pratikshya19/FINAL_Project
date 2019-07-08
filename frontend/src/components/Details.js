@@ -1,28 +1,19 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import { ButtonContainer } from './Button';
-// import {ProductConsumer} from './Context';
-import Item from './Item';
 import '../assets/css/App.css';
+import Cart from './Cart';
 
 export default class Details extends Component {
   constructor(){
     super()
     this.state = {
-      cartItems: [],
-      total: 0,
-      count: 0,
-      cart : []
+      // cartItems: [],
     }
   }
   
-  
-  
-
-
-
 addToCart = (id) => {
-  console.log(`hello from add to cart',${this.props.item.id}`);
+  console.log(`hello from add to cart',${this.props.item.id}, ${this.props.item.name}`);
   
 
 fetch('http://localhost:3000/cart_Items', {
@@ -31,12 +22,14 @@ fetch('http://localhost:3000/cart_Items', {
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
-    // cartItems: cartItems
+    item_id: this.props.item.id,
+    customer_id: parseInt(localStorage.customer)
   })
 })
 } 
 
     render() {
+      
       console.log(this.props.item)
         return (
       <div>
@@ -52,11 +45,8 @@ fetch('http://localhost:3000/cart_Items', {
       <Link to="/cart">
       <button onClick={(id)=>{this.addToCart(id)}}>Add to the Cart</button>
       </Link>
-      {/* <button onClick={(id)=>{this.addToCart(id)}}>Add to the Cart</button> */}
       
       </div>
-      
-
    </div>
     
 
