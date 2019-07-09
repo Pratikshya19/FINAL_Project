@@ -10,7 +10,10 @@ import Cart from './Cart'
 import DefaultPage from './DefaultPage'
 import login from './login'
 import SignUp from './SignUp'
-import Home from './Home'
+// import Home from './Home'
+// import Routes from './Routes';
+import CartItemList from './CartItemList';
+import Checkout from './Checkout';
 
 export default class App extends Component {
   constructor(){
@@ -141,6 +144,7 @@ this.setState({displaypaintings:x})
   <Route path="/cart" component={Cart}/>
   <Route path="/login" component={login} />
   <Route path="/SignUp" component={SignUp} />
+  <Route path="/Checkout" component={Checkout}/>
   {/* <Searchbar Search={this.Search}/> */}
   <Route component={DefaultPage}/>
   </Switch>

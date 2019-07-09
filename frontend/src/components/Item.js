@@ -30,22 +30,11 @@ render() {
 </div>
 
             </ItemWrapper>
-           
-
-          
-
-             
-
-
+    
         )
     }
 }
-// Item.propTypes = {
-//     item: PropTypes:shape{
-//         id.PropTypes.number,
-//         img:PropTypes
-//     }
-// }
+
 
 const ItemWrapper = styled.div `
 .card{
