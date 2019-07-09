@@ -7,14 +7,14 @@ Rails.application.routes.draw do
   resources :cart_items, :categories, :customers, :items, :purchases, :shopping_carts
 get '/customers/:id/items', to: 'customers#cart_items'
 
-delete '/customers/:id/items/:item_id', to: 'customers#delete'
+delete '/customers/:user_id/items/:item_id', to: 'customers#delete_item'
 
-  post '/login', to: 'auth#login'
+post '/login', to: 'auth#login'
 get '/profile', to: 'customers#profile' 
 post '/SignUp', to: 'customers#create'
 get '/Cart', to: 'cart_items#index'
 post '/cart_Items', to: 'cart_items#create'
 post '/purchase', to: 'purchases#create'
 get '/cart_Items', to: 'cart_items#index'
- get '/Cartitems', to: 'cart_items#addtocart'
+get '/Cartitems', to: 'cart_items#addtocart'
 end

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 // import {CardElement, injectStripe} from 'react-stripe-elements';
 
 
-const stripe = window.Stripe('	pk_test_F2DSfJBqAcWxlGCvAj7eZSmJ006ANFkrys');
+const stripe = "hi"//window.Stripe('pk_test_F2DSfJBqAcWxlGCvAj7eZSmJ006ANFkrys');
 
 class CheckoutForm extends Component {
 

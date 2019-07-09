@@ -20,15 +20,21 @@ clearCart = () => {
 }
 
 removeitem = (id) => {
-    console.log(id)
-    fetch(`http://localhost:3000/customers/${parseInt(localStorage.customer)}/items/${id}`, { method: "DELETE" })
-      .then(() => {
-        console.log('Removed')
-      }).catch(err => {
+    console.log(`http://localhost:3000/customers/${parseInt(localStorage.customer)}/items/${id}`)
+    fetch(`http://localhost:3000/customers/${parseInt(localStorage.customer)}/items/${id}`,
+     { method: "DELETE",
+     headers:{
+        'Authorization':`bearer ${localStorage.token}` 
+     }
+     }).then((res) => {
+        console.log('Removed: ', res)
+     }).then(() =>
+        this.fetchItems()
+     ).catch(err => {
         console.error(err)
-      })
-      
-      }
+     })
+    
+}
     
     
 
@@ -56,8 +62,12 @@ sum = () => {
 
 
    componentDidMount(){
+        this.fetchItems();
+   }
+
+   fetchItems = () => {
     fetch(`http://localhost:3000/customers/${parseInt(localStorage.customer)}/items`)
-        .then(res => res.json())
+    .then(res => res.json())
     .then(data => {
     this.setState({
         cartitems: data.items
