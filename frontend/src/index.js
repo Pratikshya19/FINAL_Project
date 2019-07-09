@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
 import { BrowserRouter as Router } from "react-router-dom";
-// import { ProductProvider} from "./components/Context";
-
 import * as serviceWorker from './serviceWorker';
 
 

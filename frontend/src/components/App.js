@@ -10,7 +10,10 @@ import Cart from './Cart'
 import DefaultPage from './DefaultPage'
 import login from './login'
 import SignUp from './SignUp'
-import Home from './Home'
+// import Home from './Home';
+import Routes from './Routes';
+import CartItemList from './CartItemList';
+import Checkout from './Checkout';
 
 export default class App extends Component {
   constructor(){
@@ -62,6 +65,9 @@ componentWillMount(){
 //     })
 //   })
 //   } 
+
+
+
 
 Search = (event) => {
   let value = event.target.value
@@ -131,18 +137,17 @@ this.setState({displaypaintings:x})
   <Navbar Search={this.Search} />
   <Filter filter={this.filter} />
   <Switch>
- {/* <Route exact path="/" render={ () => <Home /> }/>  */}
-
+{/* <Route exact path="/" render={ () => <Home /> }/>  */}
 
   <Route exact path="/" render={ () => <ItemList displaypaintings={this.state.displaypaintings} handleDetail={this.handleDetail} addToCart={this.addToCart}/> }/>
   
   <Route path="/details" render={ () => <Details item={this.state.selecteditem} inCart={this.state.inCart} addToCart={this.addToCart}/> }/>
-
   <Route path="/cart" component={Cart}/>
   <Route path="/login" component={login} />
   <Route path="/SignUp" component={SignUp} />
-  {/* <Searchbar Search={this.Search}/> */}
-  <Route component={DefaultPage}/>
+  <Route path="/Checkout" component={Checkout}/>
+  {/* <Searchbar Search={this.Search}/> */} */}
+   <Route component={DefaultPage}/>
   </Switch>
   
  
