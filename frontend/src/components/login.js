@@ -6,7 +6,7 @@ import { Col, Button, Container } from 'reactstrap';
 export default class login extends Component {
     state = {
         name: "",
-        
+        loggedIn: true
       };
   
 
@@ -75,12 +75,24 @@ if (!data.error){
     })
 }
 
+handleClick(event) {
+  localStorage.clear()
+  event.preventDefault()
+  this.setState({
+      loggedIn: false
+  })
+}
+
+
 
 
     render() {
         return(
+
  <Container>
+   
         <Col sm="12" md={{ size: 6, offset: 3 }}>
+       
       <form
           className="form-signin lower-content"
            onSubmit={this.login}>
@@ -108,10 +120,15 @@ if (!data.error){
               Log In
             </Button>
           </form>
-          <Title name={this.state.name}/>
+
+          
+          {/* <div> */}
+          
           <br />
           Or <Link to="/Signup">Create Account</Link>
+       
         </Col>
+      
         </Container>
          
     );

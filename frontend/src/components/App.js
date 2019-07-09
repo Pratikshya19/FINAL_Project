@@ -13,7 +13,8 @@ import SignUp from './SignUp'
 // import Home from './Home'
 // import Routes from './Routes';
 import CartItemList from './CartItemList';
-import Checkout from './Checkout';
+import CheckoutForm from './CheckoutForm';
+// import {Elements, StripeProvider} from 'react-stripe-elements';
 
 export default class App extends Component {
   constructor(){
@@ -131,6 +132,14 @@ this.setState({displaypaintings:x})
 
    render(){
     return(<div>
+      {/* <StripeProvider apiKey="pk_test_F2DSfJBqAcWxlGCvAj7eZSmJ006ANFkrys">
+      <h1>React Stripe Elements Example</h1>
+          <Elements>
+            <CheckoutForm />
+          </Elements>
+
+
+      </StripeProvider> */}
   <Navbar Search={this.Search} />
   <Filter filter={this.filter} />
   <Switch>
@@ -144,7 +153,7 @@ this.setState({displaypaintings:x})
   <Route path="/cart" component={Cart}/>
   <Route path="/login" component={login} />
   <Route path="/SignUp" component={SignUp} />
-  <Route path="/Checkout" component={Checkout}/>
+  <Route path="/CheckoutForm" component={CheckoutForm}/>
   {/* <Searchbar Search={this.Search}/> */}
   <Route component={DefaultPage}/>
   </Switch>

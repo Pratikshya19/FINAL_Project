@@ -19,7 +19,7 @@ render() {
 
    <Link to='/SignUp' className="ml-auto">SignUp</Link>
 
-<Link to="/login" className="ml-auto">Login</Link>
+<Link to="/login" className="ml-auto">Login/Logout</Link>
 
 <Searchbar Search={this.props.Search}/>
 

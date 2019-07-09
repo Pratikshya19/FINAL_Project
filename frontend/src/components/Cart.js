@@ -20,6 +20,7 @@ clearCart = () => {
 }
 
 removeitem = (id) => {
+    console.log(id)
     fetch(`http://localhost:3000/customers/${parseInt(localStorage.customer)}/items/${id}`, { method: "DELETE" })
       .then(() => {
         console.log('Removed')
@@ -69,7 +70,7 @@ sum = () => {
 
  <div>
             <h3>My Cart</h3>
-            
+
             {this.state.cartitems.map(cartlist => <CartItemList cartlist={cartlist} removeitem={this.removeitem} clearCart={this.clearCart} />)}
 
 
@@ -77,7 +78,7 @@ sum = () => {
 <ButtonContainer>Continue Shopping </ButtonContainer>
 </Link>
 
-<Link to="/Checkout">
+<Link to="/CheckoutForm">
 <ButtonContainer>Checkout</ButtonContainer>
 </Link>
 <h2>${this.state.total}</h2>

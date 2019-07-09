@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ButtonContainer } from './Button';
 import { Button, Container, Row, Col } from 'reactstrap';
 import '../assets/css/App.css';
-import Checkout from './Checkout';
+import Checkout from './CheckoutForm';
 
 
 export default class CartItemList extends Component {
@@ -26,7 +26,7 @@ export default class CartItemList extends Component {
 <h2>Name:{this.props.cartlist.name}</h2>
 <h2>Price:{this.props.cartlist.price}</h2>
 <Col>
- {/* <button onClick={() => this.props.removeitem(this.props.cartlist.id)}>Delete</button>  */}
+ <button onClick={() => this.props.removeitem(this.props.cartlist.id)}>Delete</button> 
 
 </Col>
 

@@ -11,11 +11,11 @@ end
     render json: customer
   end
 
-  def delete
-    customer = Customer.find(params[:id])
-    customer.destroy
-    render json: { status: 200, msg: "Customer has been deleted." }
-  end
+  # def delete
+  #   customer = Customer.find(params[:id])
+  #   customer.destroy
+  #   render json: { status: 200, msg: "Customer has been deleted." }
+  # end
 
 
 
@@ -42,6 +42,17 @@ def cart_items
 
   render json: {items: @items}
 end
+
+def delete
+  byebug
+  @customer = Customer.find(params[:id])
+
+  @cart = @customer.shopping_cart
+  @items = @cart.items
+  @items.destroy
+  render json: { status: 200, msg: "Item has been deleted." }
+end
+
 
 private
 def customer_params
