@@ -42,9 +42,9 @@ fetch('http://localhost:3000/cart_Items', {
       <Link to="/">
       <ButtonContainer>Back to the products</ButtonContainer>
       </Link>
-      {/* <Link to="/cart"> */}
+      <Link to="/cart">
       <button onClick={(id)=>{this.addToCart(id)}}>Add to the Cart</button>
-      {/* </Link> */}
+      </Link>
       
       </div>
    </div>

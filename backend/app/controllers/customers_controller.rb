@@ -17,6 +17,8 @@ end
     render json: { status: 200, msg: "Customer has been deleted." }
   end
 
+
+
   #sign up
 def create
 customer = Customer.create(customer_params)
