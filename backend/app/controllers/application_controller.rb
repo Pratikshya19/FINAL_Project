@@ -46,8 +46,12 @@ class ApplicationController < ActionController::API
       #find item in the cart of the user based on params
       #destroy the item
       
-      item_to_delete = current_customer.shopping_cart.items.find_by(id:params[:item_id])
-      item_to_delete.destroy
+      item_to_delete = current_customer.shopping_cart.cart_items.find_by(id:params[:item_id])
+      index_to_delete = current_customer.shopping_cart.cart_items.index(item_to_delete)
+      # byebug
+      current_customer.shopping_cart.cart_items[index_to_delete].destroy
+      
+      
       # byebug
       render json: current_customer, status: 200
     end

@@ -11,8 +11,10 @@ export default class Details extends Component {
       // cartItems: [],
     }
   }
+
   
-addToCart = (id) => {
+addToCart = (e,id) => {
+  e.preventDefault()
   console.log(`hello from add to cart',${this.props.item.id}, ${this.props.item.name}`);
   
 
@@ -26,7 +28,7 @@ fetch('http://localhost:3000/cart_Items', {
     customer_id: parseInt(localStorage.customer)
   })
 })
-} 
+    } 
 
     render() {
       

@@ -16,7 +16,23 @@ export default class Cart extends Component {
  
 
 clearCart = () => {
-    console.log("cart is cleared");
+fetch(`http://localhost:3000/customers/${parseInt(localStorage.customer)}/items`, {
+    method: "DELETE",
+    headers:{
+        'Authorization':`bearer ${localStorage.token}` 
+     }
+})
+
+    .then(res => res.json())
+    .then(data => {
+        console.log("cart is cleared");
+        this.setState({
+            cartitems: [],
+            total: 0 
+    
+    })
+   
+    })
 }
 
 removeitem = (id) => {
@@ -33,21 +49,8 @@ removeitem = (id) => {
      ).catch(err => {
         console.error(err)
      })
-    
 }
     
-    
-
-
-
-increaseQ = () => {
-
-}
-
-decreaseQ = () => {
-
-
-}
 
 sum = () => {
     let counter = 0
@@ -62,6 +65,7 @@ sum = () => {
 
 
    componentDidMount(){
+
         this.fetchItems();
    }
 
@@ -69,17 +73,23 @@ sum = () => {
     fetch(`http://localhost:3000/customers/${parseInt(localStorage.customer)}/items`)
     .then(res => res.json())
     .then(data => {
+       
     this.setState({
         cartitems: data.items
     })
+    console.log(this.state.cartitems)
     }).then(this.sum)
    }
+   
+
    
    render(){
     return (
 
  <div>
+    <h3><button onClick={() => this.clearCart(this.clearCart)}>Clear all</button> </h3> 
             <h3>My Cart</h3>
+            
 
             {this.state.cartitems.map(cartlist => <CartItemList cartlist={cartlist} removeitem={this.removeitem} clearCart={this.clearCart} />)}
 
@@ -92,5 +102,6 @@ sum = () => {
 <ButtonContainer>Checkout</ButtonContainer>
 </Link>
 <h2>${this.state.total}</h2>
+
  </div>)}
 }

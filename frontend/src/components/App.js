@@ -24,11 +24,6 @@ export default class App extends Component {
       isLoading: false,
       displaypaintings:[],
       selecteditem: {},
-      // inCart:false,
-      // total:0,
-      // cartSubTotal:0,
-      
-      // CartItems: []
     }
   }
   
@@ -37,35 +32,6 @@ componentWillMount(){
     this.setState({CartItems: JSON.parse(localStorage.getItem('cartItems'))});
   }
 }
-
-// handleRemoveFromCart = (e,item) => {
-
-// let CartItems = this.state.CartItems.filter(a => a.id !== item.id);
-
-// localStorage.setItem('CartItems', JSON.stringify(CartItems));
-// }
-
-// handleAddToCart = (e,item) => {
-
-//   this.setState({
-
-
-//   })
-// }
-
-// addToCart = (id) => {
-//   fetch('http://localhost:3000/cart_Items', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify({
-//       item_id: this.state.selecteditem.id,
-//       shopping_cart_id: 1,
-  
-//     })
-//   })
-//   } 
 
 Search = (event) => {
   let value = event.target.value

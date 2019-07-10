@@ -6,17 +6,18 @@ def index
   render json: customers
 end
 
+
 def show
   customer = Customer.find(params[:id])
   render json: customer
 end
+
 
 def delete_customer
   customer = Customer.find(params[:id])
   customer.destroy
   render json: { status: 200, msg: "Customer has been deleted." }
 end
-
 
 
   #sign up
@@ -36,16 +37,20 @@ def profile
 def cart_items
   # byebug
   @customer = Customer.find(params[:id])
+ @cart = @customer.shopping_cart
 
-  @cart = @customer.shopping_cart
-  @items = @cart.items
+  @items = @cart.cart_items.map do |item|
+    Item.find(item.id)
+  end
+
+  # @item = Item.find(params[:id])
 
   render json: {items: @items}
 end
 
 def delete_item
   puts "deleting item"
-  byebug
+  # byebug
   @customer = Customer.find(params[:id])
 
   @cart = @customer.shopping_cart

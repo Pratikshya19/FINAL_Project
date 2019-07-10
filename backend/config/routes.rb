@@ -9,6 +9,8 @@ get '/customers/:id/items', to: 'customers#cart_items'
 
 delete '/customers/:user_id/items/:item_id', to: 'customers#delete_item'
 
+
+
 post '/login', to: 'auth#login'
 get '/profile', to: 'customers#profile' 
 post '/SignUp', to: 'customers#create'

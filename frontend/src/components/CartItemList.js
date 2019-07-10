@@ -27,7 +27,11 @@ export default class CartItemList extends Component {
 <h2>Price:{this.props.cartlist.price}</h2>
 <Col>
  <button onClick={() => this.props.removeitem(this.props.cartlist.id)}>Delete</button> 
+ 
 
+
+
+ 
 </Col>
 
 
