@@ -29,7 +29,9 @@ export default class login extends Component {
               console.log(data)
             if (!data.error) {
               this.setState({
-                currentCustomer: data
+                loggedIn: true,
+                name: data
+                // currentCustomer: data
               });
             }
           });

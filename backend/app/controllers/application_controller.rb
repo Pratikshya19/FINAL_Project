@@ -14,6 +14,7 @@ class ApplicationController < ActionController::API
       if decoded_token
         
       customer_id = decoded_token["customer_id"]
+      
       customer = Customer.find_by(id: customer_id)
 
       puts "everything has worked so far in current_customer."
@@ -35,7 +36,6 @@ class ApplicationController < ActionController::API
    end
 
    def check_authentication
-    # render json: { error: 'Please log in' }, status: 401 if !logged_in?
     
     puts `are we logged in?: #{logged_in?.to_s}`
 
@@ -43,17 +43,14 @@ class ApplicationController < ActionController::API
     if(!logged_in?)
       render json: { error: 'Please log in' }, status: 401
     else
+      
       #find item in the cart of the user based on params
       #destroy the item
       
-      item_to_delete = current_customer.shopping_cart.cart_items.find_by(id:params[:item_id])
-      index_to_delete = current_customer.shopping_cart.cart_items.index(item_to_delete)
-      # byebug
-      current_customer.shopping_cart.cart_items[index_to_delete].destroy
-      
-      
-      # byebug
-      render json: current_customer, status: 200
+      # item_to_delete = current_customer.shopping_cart.cart_items.find_by(id:params[:item_id])
+      # index_to_delete = current_customer.shopping_cart.cart_items.index(item_to_delete)
+      # current_customer.shopping_cart.cart_items[index_to_delete].destroy
+    #  render json: current_customer, status: 200
     end
     
   
