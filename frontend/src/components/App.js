@@ -12,7 +12,7 @@ import login from './login'
 import SignUp from './SignUp'
 import CartItemList from './CartItemList';
 import CheckoutForm from './CheckoutForm';
-import Home from './Home'
+import Home from './Home';
 import Searchbar from './Searchbar';
 
 export default class App extends Component {
@@ -98,10 +98,6 @@ this.setState({displaypaintings:x})
 
  <Route path="/SignUp" component={SignUp} hideNavBar={true} />
  <Route path="/login" component={login} />
-
- {/* <Route path="/search" component={Searchbar}/> */}
-
-
  <Route path="/search" render={ () => <Searchbar Search={this.Search}/> } />
 
  <Route path="/details" render={ () => <Details item={this.state.selecteditem} inCart={this.state.inCart}/> }/>

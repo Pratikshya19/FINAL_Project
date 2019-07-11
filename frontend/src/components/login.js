@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import Title from './Title'
+
 import { Link } from 'react-router-dom';
 import { Col, Button, Container } from 'reactstrap';
+
 
 export default class login extends Component {
     state = {
@@ -61,7 +62,9 @@ if (!data.error){
     this.setState({
         name: data.name,
         loggedIn: true
-      });
+      }
+        
+     );
 
 }
        else {
@@ -71,6 +74,7 @@ if (!data.error){
        
     })
 }
+
 
 handleClick(event) {
   localStorage.clear()
@@ -121,6 +125,8 @@ handleClick(event) {
        
         </Col>
         : 
+
+       
        <button id="logout-btn" onClick={(event) => this.handleClick(event)}>Logout</button> 
     
    }

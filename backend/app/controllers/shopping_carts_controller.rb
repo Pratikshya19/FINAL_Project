@@ -11,8 +11,20 @@ class ShoppingCartsController < ApplicationController
     end
 
 
-    # def show_cart
-    #     @total_price = 0.0
-    #     @cartItem = CartItem.find
+    # def update
+    #     @shopping_cart = Shopping_cart.find(params[:id])
+    #     @shopping_cart.update(quantity: params[:quantity], customer_id: params[customer_id])
+    #     if @order.save
+    #       render json: @order, status: :accepted
+    #     else
+    #       render json: { errors: @order.errors.full_messages }
+    #     end
     #   end
+
+    #   private 
+
+    #   def shopping_cart_params
+    #     params.permit(:quantity, :product_id, :user_id)
+    #   end
+
 end

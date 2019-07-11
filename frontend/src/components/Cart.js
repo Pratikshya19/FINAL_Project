@@ -64,9 +64,6 @@ sum = () => {
     }
      
 
-
-
-
    componentDidMount(){
 
         this.fetchItems();
@@ -94,13 +91,13 @@ sum = () => {
  <div>
     <h3><button onClick={() => this.clearCart(this.clearCart)}>Clear all</button> </h3> 
             <h3>My Cart</h3>
+            {/* <CartItemList cartitems={this.state.cartitems} /> */}
          {this.state.isLoaded === false ? 
             <h3>No items</h3>
             
-            : this.state.cartitems.map(cartlist => <CartItemList cartlist={cartlist} removeitem={this.removeitem} clearCart={this.clearCart} />)}   
-    
-            {/* {this.state.cartitems.map(cartlist => <CartItemList cartlist={cartlist} removeitem={this.removeitem} clearCart={this.clearCart} />)} */}
-
+            :
+             this.state.cartitems.map(cartlist => <CartItemList cartlist={cartlist} removeitem={this.removeitem} clearCart={this.clearCart} total={this.state.total} />)
+             } 
 
 <Link to="/ItemList">
 <ButtonContainer>Continue Shopping </ButtonContainer>
