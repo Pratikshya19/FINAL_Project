@@ -10,9 +10,12 @@ export default class login extends Component {
         loggedIn: false
       };
   
-
+      // isLoggedIn = () => {
+      //   return !!localStorage.
+      // }
 
       componentDidMount() {
+        
         const token = localStorage.token;
         console.log(token)
         fetch("http://localhost:3000/profile", {
@@ -125,7 +128,7 @@ handleClick(event) {
        
         </Col>
         : 
-        
+
 <Button
               className="btn btn-lg btn-primary btn-block white-button"
         onClick={(event) => this.handleClick(event)}>Logout</Button> 

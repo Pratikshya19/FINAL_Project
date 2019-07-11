@@ -1,133 +1,44 @@
-import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
-// import { Button , Table, Container } from 'reactstrap';
-
-export default class CheckoutForm extends Component {
-
-
-  render(){
-    return(<div>
-
-      <div className="row">
-        <div className="col-75">
-        <div className="container">
-     
-
-
-     
-        <div className="row">
-
-<h3>Checkout</h3>
-
-
-        </div>
-
-
-
-        </div>
-     </div>
-     </div>
-     </div>
-     )
-  }
-
-
-}
-
-// 
-//   return(
-//  <div>
-
-// <div className="row">
-//   <div className="col-75">
-//     <div className="container">
-//       {/* <form action="/action_page.php"> */}
-      
-//         <div className="row">
-//           <div className="col-50">
-//             <h3>Billing Address</h3>
-//             {/* <label for="fname"><i class="fa fa-user"></i> Full Name</label> */}
-//             <input type="text"  name="firstname" placeholder="Name">
-//             <label for="email"> Email</label>
-//             <input type="text" id="email" name="email" placeholder="john@example.com">
-//             <label for="adr"> Address</label>
-//             <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
-//             <label for="city"><i class="fa fa-institution"></i> City</label>
-//             <input type="text" id="city" name="city" placeholder="New York">
-
-//             <div className="row">
-//               <div className="col-50">
-//                 <label for="state">State</label>
-//                 <input type="text" id="state" name="state" placeholder="NY">
-//               </div>
-//               <div className="col-50">
-//                 <label for="zip">Zip</label>
-//                 <input type="text" id="zip" name="zip" placeholder="10001">
-//               </div>
-//             </div>
-//           </div>
-
-//           <div className="col-50">
-//             <h3>Payment</h3>
-//             <label for="fname">Accepted Cards</label>
-//             <div class="icon-container">
-//               <i class="fa fa-cc-visa" style="color:navy;"></i>
-//               <i class="fa fa-cc-amex" style="color:blue;"></i>
-//               <i class="fa fa-cc-mastercard" style="color:red;"></i>
-//               <i class="fa fa-cc-discover" style="color:orange;"></i>
-//             </div>
-//             <label for="cname">Name on Card</label>
-//             <input type="text" id="cname" name="cardname" placeholder="John More Doe">
-//             <label for="ccnum">Credit card number</label>
-//             <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
-//             <label for="expmonth">Exp Month</label>
-//             <input type="text" id="expmonth" name="expmonth" placeholder="September">
-//             <div className="row">
-//               <div className="col-50">
-//                 <label for="expyear">Exp Year</label>
-//                 <input type="text" id="expyear" name="expyear" placeholder="2018">
-//               </div>
-//               <div className="col-50">
-//                 <label for="cvv">CVV</label>
-//                 <input type="text" id="cvv" name="cvv" placeholder="352">
-//               </div>
-//             </div>
-//           </div>
-          
-//         </div>
-//         <label>
-//           <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
-//         </label>
-//         <input type="submit" value="Continue to checkout" class="btn">
-//       </form>
-//     </div>
-//   </div>
-//   <div class="col-25">
-//     <div class="container">
-//       <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
-//       <p><a href="#">Product 1</a> <span class="price">$15</span></p>
-//       <p><a href="#">Product 2</a> <span class="price">$5</span></p>
-//       <p><a href="#">Product 3</a> <span class="price">$8</span></p>
-//       <p><a href="#">Product 4</a> <span class="price">$2</span></p>
-//       <hr>
-//       <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
-//     </div>
-//   </div>
-// </div>
-
-
-
-
-
-
-
-
-
-
-//  </div>)
-     
-
-
-//   }
-
-// }
+import React from 'react';
+import PaypalExpressBtn from 'react-paypal-express-checkout';
+ 
+export default class CheckoutForm extends React.Component {
+    render() {
+        const onSuccess = (payment) => {
+            // Congratulation, it came here means everything's fine!
+            		console.log("The payment was succeeded!", payment);
+            		// You can bind the "payment" object's value to your state or props or whatever here, please see below for sample returned data
+        }
+ 
+        const onCancel = (data) => {
+            // User pressed "cancel" or close Paypal's popup!
+            console.log('The payment was cancelled!', data);
+            // You can bind the "data" object's value to your state or props or whatever here, please see below for sample returned data
+        }
+ 
+        const onError = (err) => {
+            // The main Paypal's script cannot be loaded or somethings block the loading of that script!
+            console.log("Error!", err);
+            // Because the Paypal's main script is loaded asynchronously from "https://www.paypalobjects.com/api/checkout.js"
+            // => sometimes it may take about 0.5 second for everything to get set, or for the button to appear
+        }
+ 
+        let env = 'sandbox'; // you can set here to 'production' for production
+        let currency = 'USD'; // or you can set this value from your props or state
+        let total = 1; // same as above, this is the total amount (based on currency) to be paid by using Paypal express checkout
+        // Document on Paypal's currency code: https://developer.paypal.com/docs/classic/api/currency_codes/
+ 
+        const client = {
+          sandbox:    'YOUR-SANDBOX-APP-ID',
+            production: 'YOUR-PRODUCTION-APP-ID',
+        }
+        // In order to get production's app-ID, you will have to send your app to Paypal for approval first
+        // For sandbox app-ID (after logging into your developer account, please locate the "REST API apps" section, click "Create App"):
+        //   => https://developer.paypal.com/docs/classic/lifecycle/sb_credentials/
+        // For production app-ID:
+        //   => https://developer.paypal.com/docs/classic/lifecycle/goingLive/
+ 
+        // NB. You can also have many Paypal express checkout buttons on page, just pass in the correct amount and they will work!
+        return (
+            <PaypalExpressBtn env={env} client={client} currency={currency} total={total} onError={onError} onSuccess={onSuccess} onCancel={onCancel} />
+        );
+    }}

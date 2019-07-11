@@ -93,7 +93,7 @@ sum = () => {
     return (
 
  <div>
-    
+     {/* <CheckoutForm total={this.total} history={this.props.history} clearCart={this.clearCart}/>  */}
         {/* <button onClick={() => this.clearCart(this.clearCart)}><h3>Delete all</h3></button> */}
         <div className="col-10 mx-auto col-lg-2">
         <h3>My Cart</h3>
@@ -124,8 +124,12 @@ sum = () => {
 
 <Link to="/CheckoutForm">
 <button type="button" class="btn btn-secondary btn-lg active">Checkout</button>
+<div>
+
+</div>
 
 </Link>
+
 </div>
 
 

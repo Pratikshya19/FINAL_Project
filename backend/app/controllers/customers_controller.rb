@@ -12,6 +12,7 @@ def update
 end
 
 def show
+  # byebug
   customer = Customer.find(params[:id])
   render json: customer
 end
@@ -35,6 +36,7 @@ end
 
 
 def profile
+  puts "profile "
     render json: current_customer
  end
 

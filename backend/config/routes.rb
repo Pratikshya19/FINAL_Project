@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   # namespace :api do
   #   namespace :v1 do
-
+  get '/profile', to: 'customers#profile' 
   resources :cart_items, :categories, :customers, :items, :purchases, :shopping_carts
 get '/customers/:id/items', to: 'customers#cart_items'
 
@@ -12,7 +12,7 @@ get '/customers/:id/items', to: 'customers#cart_items'
 delete '/customers/:customer_id/items/:item_id', to: 'customers#delete_item'
 
 post '/login', to: 'auth#login'
-get '/profile', to: 'customers#profile' 
+# get '/profile', to: 'customers#profile' 
 post '/SignUp', to: 'customers#create'
 get '/Cart', to: 'cart_items#index'
 post '/cart_Items', to: 'cart_items#create'
