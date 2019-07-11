@@ -62,6 +62,19 @@ def delete_item
   render json: { status: 200, msg: "Item has been deleted." }
 end
 
+def delete_items
+  # byebug
+  puts "deleting item"
+  # byebug
+  @customer = Customer.find(params[:customer_id])
+
+  @cart = @customer.shopping_cart
+  @cart_item = @cart.cart_items
+  @cart_item.destroy
+  render json: { status: 200, msg: "Item has been deleted." }
+end
+
+
 
 private
 def customer_params

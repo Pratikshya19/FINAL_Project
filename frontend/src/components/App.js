@@ -109,16 +109,6 @@ this.setState({displaypaintings:x})
 
  <ItemList displaypaintings={this.state.displaypaintings} handleDetail={this.handleDetail} filter={this.filter} item={this.state.selecteditem} />
 
-
-
-  {/* <Route exact path="/" render={ () => <ItemList displaypaintings={this.state.displaypaintings} handleDetail={this.handleDetail} addToCart={this.addToCart}/> }/> */}
-{/*   
-
-  <Route path="/details" render={ () => <Details item={this.state.selecteditem} inCart={this.state.inCart}/> }/> */}
-
-  
-  
-  {/* <Searchbar Search={this.Search}/> */}
   <Route component={DefaultPage}/>
   </Switch>
  

@@ -97,10 +97,13 @@ handleClick(event) {
  <Container>
    {!this.state.loggedIn ? 
      <Col sm="12" md={{ size: 4, offset: 3 }}>
+
   <form
           className="form-signin lower-content"
            onSubmit={this.login}>
+             <br></br>
   <h1 className="h3 mb-3 font-weight-normal">Login</h1>
+<br></br>
  <label className="sr-only">Username</label>
  <input
               className="form-control"

@@ -34,8 +34,8 @@ fetch('http://localhost:3000/cart_Items', {
       console.log(this.props.item)
         return (
       <div>
-        
- <h3>{this.props.item.name}</h3>
+        <br></br>
+       <h3>{this.props.item.name}</h3>
       
       <div className="image-container">
       <img src={`../../Pictures/${this.props.item.image_url}`} class="img-fluid img-thumbnail" alt="Product" className="card-img-top"/>
@@ -46,10 +46,10 @@ fetch('http://localhost:3000/cart_Items', {
       
 
       <Link to="/ItemList">
-      <ButtonContainer>Back to the products</ButtonContainer>
+      <ButtonContainer><h4>Back to the products</h4></ButtonContainer>
       </Link>
       <Link to="/cart">
-      <button onClick={(id)=>{this.addToCart(id)}}>Add to the Cart</button>
+      <button onClick={(id)=>{this.addToCart(id)}}><h4>Add to the Cart</h4></button>
       </Link>
       
       </div>

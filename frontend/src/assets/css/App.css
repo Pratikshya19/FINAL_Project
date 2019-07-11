@@ -25,7 +25,7 @@
 }
 
 body {
-  font-family: "Arial";
+ 
   letter-spacing: 0.3rem;
   text-allign: center;
 }
@@ -35,7 +35,7 @@ body {
 
 .container {
   letter-spacing: 0.1rem;
-  padding-left: 80px;
+  padding-left: 100px;
   text-allign: center;
   flex-direction: column;
 }
@@ -47,10 +47,12 @@ body {
   flex-direction: column;
 }
 .image-container {
-  margin-right: 30;
-  max-width: 40%;
-  border: 10px solid;
+  margin-right: 80;
+  max-width: 30%;
+  border: 1px solid;
   display: block;
+  margin-top: 10px;
+  margin-left: 50px;
 }
 
 .column-half-2 {
@@ -62,10 +64,10 @@ body {
 
 .center-fit {
   float: left; 
- padding: 0 20px 20px 0;
-  max-width: 89%;
-  max-height: 89%;
-  margin: 30px 0px;
+ padding: 0 50px 50px 0;
+  max-width: 95%;
+  max-height: 95%;
+  margin: 40px 10px;
 }
 
 .position {
@@ -78,13 +80,17 @@ padding-left: 120px;
 }
 .text-allign {
   text-align: center;
-  padding-top: 100px;
+  padding-top: 2000px;
 }
 
-.navbar navbar-expand-lg navbar-light bg-light {
+.navbar navbar-expand-lg bg-light navbar-lightpx-lg-5 {
+  
   min-height: 100px;
-  padding-top: 30px;
-    padding-bottom: 30px;
+  padding-top: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 1rem;
+    border-radius: 0
 }
 .table {
   font-family: Arial, Helvetica, sans-serif;
@@ -99,7 +105,7 @@ padding-left: 120px;
 padding: 10px;
   width: 80px;
   min-height: 100px;
-
+  padding-top: 30px;
   padding-bottom: 30px;
 }
 

@@ -45,9 +45,12 @@ export default class SignUp extends Component {
             
                  <Container>
                  <Col sm="12" md={{ size: 4, offset: 3 }}>
+                   <br></br>
+                   
                  <form
             className="form-signin lower-content" onSubmit={this.SignUp}>
 <h1 className="h3 mb-3 font-weight-normal">Sign Up</h1>
+<br></br>
 <label className="sr-only">Username</label>
 <input className="form-control"
               name="name"

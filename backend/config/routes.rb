@@ -11,6 +11,9 @@ get '/customers/:id/items', to: 'customers#cart_items'
 
 delete '/customers/:customer_id/items/:item_id', to: 'customers#delete_item'
 
+delete '/customers/:customer_id/items', to: 'customers#delete_items'
+
+
 post '/login', to: 'auth#login'
 # get '/profile', to: 'customers#profile' 
 post '/SignUp', to: 'customers#create'

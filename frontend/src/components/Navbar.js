@@ -12,28 +12,29 @@ import styled from "styled-components";
 export default class Navbar extends Component {
 render() {
         return (
+            // <div className="navbar-inner"></div>
             // <nav className="navbar navbar-expand-sm  navbar-dark px-sm-5">
-         <nav className="navbar navbar-expand-sm bg-light navbar-lightpx-sm-5"> 
-    <Link to='/'>HOME</Link>
+         <nav className="navbar navbar-expand-lg bg-light navbar-lightpx-lg-5"> 
+    <Link to='/'><h3>HOME</h3></Link>
 
-   <Link to='/SignUp' className="ml-auto">Sign Up</Link>
+   <Link to='/SignUp' className="ml-auto"><h3>SIGN UP</h3></Link>
 
-<Link to="/login" className="ml-auto">LogIn</Link>
+<Link to="/login" className="ml-auto"><h3>LogIn/LogOut</h3></Link>
 
 <Searchbar Search={this.props.Search}/>
 
 <Link to='/cart' className="ml-auto">
     <ButtonContainer>
-<span className="mr-2">
-My cart</span>
+<span className="mr-4"><h5>My CART</h5>
+</span>
     </ButtonContainer>
 </Link>
 
 
 
 </nav>
-         
-            
+
+    
          
         )
     }

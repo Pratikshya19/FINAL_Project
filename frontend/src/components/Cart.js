@@ -25,15 +25,12 @@ fetch(`http://localhost:3000/customers/${parseInt(localStorage.customer)}/items`
         'Authorization':`bearer ${localStorage.token}` 
      }
 })
+.then(() => {
+    this.setState({
+        cartitems: [],
+        total: 0 
+})
 
-    .then(res => res.json())
-    .then(data => {
-        console.log("cart is cleared");
-        this.setState({
-            cartitems: [],
-            total: 0 
-    
-    })
    
     })
 }
@@ -93,13 +90,14 @@ sum = () => {
     return (
 
  <div>
-     {/* <CheckoutForm total={this.total} history={this.props.history} clearCart={this.clearCart}/>  */}
+    
         {/* <button onClick={() => this.clearCart(this.clearCart)}><h3>Delete all</h3></button> */}
+        <br></br>
         <div className="col-10 mx-auto col-lg-2">
-        <h3>My Cart</h3>
+        <h2>My Cart</h2>
         </div>
         
-      
+      <br></br>
            
             {/* <CartItemList cartitems={this.state.cartitems} /> */}
          {this.state.isLoaded === false ? 
@@ -113,7 +111,7 @@ sum = () => {
 <h2 className="text-uppercase">Total: ${this.state.total} </h2>
 </div>
 
-<div className="col-10 mx-auto col-lg-20"></div>
+<div className="col-10 mx-auto col-lg-1"></div>
 <Link to="/ItemList">
 <button type="button" class="btn btn-secondary btn-lg active">Continue Shopping</button>
 </Link>
@@ -122,13 +120,14 @@ sum = () => {
 <div className="col-10 mx-auto col-lg-1">
 
 
-<Link to="/CheckoutForm">
+<Link to="/CheckoutForm" >
+
+
 <button type="button" class="btn btn-secondary btn-lg active">Checkout</button>
-<div>
-
-</div>
-
 </Link>
+
+
+
 
 </div>
 

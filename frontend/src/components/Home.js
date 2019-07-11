@@ -9,10 +9,11 @@ import { ButtonContainer } from './Button';
 
 export default class Home extends Component {
 render() {
+
+
+    
         return(<div>
 
-
-        
             <div className="position">
 <Link to='/ItemList' className="ml-auto">
 <img class="center-fit" src={ pic }  />
@@ -27,3 +28,6 @@ render() {
             }}
 
 
+
+
+          
