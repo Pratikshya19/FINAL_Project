@@ -48,7 +48,7 @@ render() {
 const ItemWrapper = styled.div `
 .card{
   
-    transition:all 4s linear;
+    transition:all 2s linear;
 }
 .card-footer{
     back-ground: transparent;
@@ -59,13 +59,13 @@ border:0.04re, solid rgba(0,0,0.2);
 }
 .main-border {
     background-size: 90% 90%;
-    height: 700px;
-    width: 700px;
+    height: 600px;
+    width: 600px;
 margin-left: auto;
 margin-right: auto;
 }
 img{
-    max-width: 90%;
+    max-width: 80%;
     max-height: 90%;
 }
 `

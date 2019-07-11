@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Button, Container, Row, Col } from 'reactstrap';
 import CartItemList from './CartItemList';
 import { ButtonContainer } from './Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import CheckoutForm from './CheckoutForm';
 
 export default class Cart extends Component {
     constructor(){
@@ -36,7 +38,9 @@ fetch(`http://localhost:3000/customers/${parseInt(localStorage.customer)}/items`
     })
 }
 
-removeitem = (id) => {
+removeitem = (e, id) => {
+    e.preventDefault()
+    // debugger
     console.log(`http://localhost:3000/customers/${parseInt(localStorage.customer)}/items/${id}`)
     fetch(`http://localhost:3000/customers/${parseInt(localStorage.customer)}/items/${id}`,
      { method: "DELETE",
@@ -89,24 +93,44 @@ sum = () => {
     return (
 
  <div>
-    <h3><button onClick={() => this.clearCart(this.clearCart)}>Clear all</button> </h3> 
-            <h3>My Cart</h3>
+    
+        {/* <button onClick={() => this.clearCart(this.clearCart)}><h3>Delete all</h3></button> */}
+        <div className="col-10 mx-auto col-lg-2">
+        <h3>My Cart</h3>
+        </div>
+        
+      
+           
             {/* <CartItemList cartitems={this.state.cartitems} /> */}
          {this.state.isLoaded === false ? 
-            <h3>No items</h3>
+            <h3>Your cart is empty</h3>
             
             :
              this.state.cartitems.map(cartlist => <CartItemList cartlist={cartlist} removeitem={this.removeitem} clearCart={this.clearCart} total={this.state.total} />)
              } 
+<div>
+<div className="col-10 mx-auto col-lg-2">
+<h2 className="text-uppercase">Total: ${this.state.total} </h2>
+</div>
 
+<div className="col-10 mx-auto col-lg-20"></div>
 <Link to="/ItemList">
-<ButtonContainer>Continue Shopping </ButtonContainer>
+<button type="button" class="btn btn-secondary btn-lg active">Continue Shopping</button>
 </Link>
+</div>
+
+<div className="col-10 mx-auto col-lg-1">
+
 
 <Link to="/CheckoutForm">
-<ButtonContainer>Checkout</ButtonContainer>
-</Link>
-<h2>${this.state.total}</h2>
+<button type="button" class="btn btn-secondary btn-lg active">Checkout</button>
 
- </div>)}
+</Link>
+</div>
+
+
+
+
+ </div>
+ )}
 }

@@ -125,9 +125,10 @@ handleClick(event) {
        
         </Col>
         : 
-
-       
-       <button id="logout-btn" onClick={(event) => this.handleClick(event)}>Logout</button> 
+        
+<Button
+              className="btn btn-lg btn-primary btn-block white-button"
+        onClick={(event) => this.handleClick(event)}>Logout</Button> 
     
    }
    

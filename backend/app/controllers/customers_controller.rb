@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-  skip_before_action :check_authentication, only: [:create, :cart_items]
+  skip_before_action :check_authentication, only: [:create, :cart_items, :delete_item]
 
 def index
   customers = Customer.all 
@@ -48,12 +48,14 @@ def cart_items
 end
 
 def delete_item
+  # byebug
   puts "deleting item"
-  @customer = Customer.find(params[:id])
+  # byebug
+  @customer = Customer.find(params[:customer_id])
 
-@cart = @customer.shopping_cart
-  @items = @cart.items
-  @items.destroy
+  @cart = @customer.shopping_cart
+  @cart_item = @cart.cart_items.find_by(item_id: params[:item_id])
+  @cart_item.destroy
   render json: { status: 200, msg: "Item has been deleted." }
 end
 

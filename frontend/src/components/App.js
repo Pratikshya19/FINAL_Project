@@ -15,6 +15,8 @@ import CheckoutForm from './CheckoutForm';
 import Home from './Home';
 import Searchbar from './Searchbar';
 
+
+
 export default class App extends Component {
   constructor(){
     super()
@@ -102,7 +104,7 @@ this.setState({displaypaintings:x})
 
  <Route path="/details" render={ () => <Details item={this.state.selecteditem} inCart={this.state.inCart}/> }/>
  <Route path="/cart" component={Cart}/>
- 
+ <Route path="/CheckoutForm" component={CheckoutForm}/>
   
 
  <ItemList displaypaintings={this.state.displaypaintings} handleDetail={this.handleDetail} filter={this.filter} item={this.state.selecteditem} />
@@ -115,7 +117,7 @@ this.setState({displaypaintings:x})
   <Route path="/details" render={ () => <Details item={this.state.selecteditem} inCart={this.state.inCart}/> }/> */}
 
   
-  <Route path="/CheckoutForm" component={CheckoutForm}/>
+  
   {/* <Searchbar Search={this.Search}/> */}
   <Route component={DefaultPage}/>
   </Switch>

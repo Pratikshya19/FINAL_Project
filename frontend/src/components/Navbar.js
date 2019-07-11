@@ -8,6 +8,7 @@ import SignUp from './SignUp'
 import ItemList from './ItemList'
 import styled from "styled-components";
 
+
 export default class Navbar extends Component {
 render() {
         return (
@@ -17,7 +18,7 @@ render() {
 
    <Link to='/SignUp' className="ml-auto">Sign Up</Link>
 
-<Link to="/login" className="ml-auto">LogIn/LogOut</Link>
+<Link to="/login" className="ml-auto">LogIn</Link>
 
 <Searchbar Search={this.props.Search}/>
 
@@ -27,6 +28,8 @@ render() {
 My cart</span>
     </ButtonContainer>
 </Link>
+
+
 
 </nav>
          
