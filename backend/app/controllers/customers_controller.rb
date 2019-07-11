@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-  skip_before_action :check_authentication, only: [:create, :cart_items]
+  skip_before_action :check_authentication, only: [:create, :cart_items, :delete_item, :customer_params]
 
 def index
   customers = Customer.all 
@@ -39,8 +39,7 @@ def cart_items
   @customer = Customer.find(params[:id])
  @cart = @customer.shopping_cart
 
-  @items = @cart.cart_items.map do |item|
-    Item.find(item.id)
+  @items = @cart.cart_items.map do |cart_item|  Item.all.find do |item| cart_item.item_id==item.id end 
   end
 
   # @item = Item.find(params[:id])

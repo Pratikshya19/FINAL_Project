@@ -10,6 +10,8 @@ end
 
     def show
         @category = Category.find(params[:id])
+        @items = Item.all
+        
         render json: @category 
     end
 

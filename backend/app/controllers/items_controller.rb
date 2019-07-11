@@ -8,6 +8,7 @@ class ItemsController < ApplicationController
       end
   
       def show
+        
           @item = Item.find(params[:id])
           render json: @item
       end
@@ -17,6 +18,6 @@ class ItemsController < ApplicationController
     @item.destroy
   end
 
-  
+
 
 end

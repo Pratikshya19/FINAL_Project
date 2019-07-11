@@ -40,7 +40,7 @@ I8=Item.create(name:"Lights On Whale Rock", artist:"Erin Hanson", price:60, desc
 
 I9=Item.create(name:"Bon Voyage", artist:"Greg Olsen", price:47, description:"Out the call went, twas the day to embark, All aboard on Noah�s gopher-wood ark! ", category_id:c1.id, image_url:"09.png")
 
-I10=Item.create(name:"Bon Voyage", artist:"Robin Moline", price:27, description:"Summer on the Farm was done as an original for the John Deere Pavilion in Moline Illinois as part of a series in a mural display depicting the four seasons on the farm.", category_id:c1.id, image_url:"10.png")
+I10=Item.create(name:"Summer On the Farm", artist:"Robin Moline", price:27, description:"Summer on the Farm was done as an original for the John Deere Pavilion in Moline Illinois as part of a series in a mural display depicting the four seasons on the farm.", category_id:c1.id, image_url:"10.png")
 
 I11=Item.create(name:"Summer Sky", artist:"Linda Woods", price:22, description:"Abstract watercolor art in shades of blue by Linda Woods.", category_id:c1.id, image_url:"11.png")
 
@@ -50,7 +50,7 @@ I13=Item.create(name:"The Introvert", artist:"Cynthia Decker", price:50, descrip
 
 I14=Item.create(name:"Space Tourist", artist:"Vitaliy Gladkiy", price:27, description:"Digital Art", category_id:c2.id, image_url:"14.png")
 
-I15=Item.create(name:"Space Tourist", artist:"Ken Taylor", price:17, description:"This is a composite image and digital painting of Fall leaves turning color", category_id:c2.id, image_url:"15.png")  
+I15=Item.create(name:"Fall Leaves", artist:"Ken Taylor", price:17, description:"This is a composite image and digital painting of Fall leaves turning color", category_id:c2.id, image_url:"15.png")  
 
 I16=Item.create(name:"Hollow Still Life 1", artist:"Adrienne Romine", price:22, description:"A still life I created during an artist residency in Beijing, China in June 2011", category_id:c2.id, image_url:"16.png") 
 

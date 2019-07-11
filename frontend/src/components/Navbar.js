@@ -1,25 +1,23 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import logo from '../logo.svg'
-import styled from 'styled-components';
 import { ButtonContainer } from './Button';
 import Searchbar from './Searchbar';
 import login from './login'
 import SignUp from './SignUp'
 import ItemList from './ItemList'
-
+import styled from "styled-components";
 
 export default class Navbar extends Component {
 render() {
         return (
-            
-        <nav className="navbar navbar-expand-sm bg-light navbar-lightpx-sm-5">
-            
-    <Link to='/'>PAINTINGS</Link>
+            // <nav className="navbar navbar-expand-sm  navbar-dark px-sm-5">
+         <nav className="navbar navbar-expand-sm bg-light navbar-lightpx-sm-5"> 
+    <Link to='/'>HOME</Link>
 
-   <Link to='/SignUp' className="ml-auto">SignUp</Link>
+   <Link to='/SignUp' className="ml-auto">Sign Up</Link>
 
-<Link to="/login" className="ml-auto">Login/Logout</Link>
+<Link to="/login" className="ml-auto">LogIn/LogOut</Link>
 
 <Searchbar Search={this.props.Search}/>
 
@@ -38,4 +36,11 @@ My cart</span>
     }
 }
 
-
+// const nav = styled.nav`
+//   background: var(--mainBlue);
+//   .nav-link {
+//     color: var(--mainWhite) !important;
+//     font-size:1.3rem;
+//     text-transform:capitalize;
+//   `};
+ 

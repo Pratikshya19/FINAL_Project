@@ -9,7 +9,8 @@ export default class Cart extends Component {
         super()
         this.state = ({
             cartitems: [],
-            total: 0 
+            total: 0,
+            isLoaded: false
 
         })
     }
@@ -64,37 +65,44 @@ sum = () => {
      
 
 
+
+
    componentDidMount(){
 
         this.fetchItems();
+    
    }
 
    fetchItems = () => {
     fetch(`http://localhost:3000/customers/${parseInt(localStorage.customer)}/items`)
     .then(res => res.json())
     .then(data => {
-       
+       console.log("my data",data)
     this.setState({
-        cartitems: data.items
+        cartitems: data.items,
+        isLoaded: true
     })
     console.log(this.state.cartitems)
     }).then(this.sum)
    }
    
 
-   
+
    render(){
     return (
 
  <div>
     <h3><button onClick={() => this.clearCart(this.clearCart)}>Clear all</button> </h3> 
             <h3>My Cart</h3>
+         {this.state.isLoaded === false ? 
+            <h3>No items</h3>
             
+            : this.state.cartitems.map(cartlist => <CartItemList cartlist={cartlist} removeitem={this.removeitem} clearCart={this.clearCart} />)}   
+    
+            {/* {this.state.cartitems.map(cartlist => <CartItemList cartlist={cartlist} removeitem={this.removeitem} clearCart={this.clearCart} />)} */}
 
-            {this.state.cartitems.map(cartlist => <CartItemList cartlist={cartlist} removeitem={this.removeitem} clearCart={this.clearCart} />)}
 
-
-<Link to="/">
+<Link to="/ItemList">
 <ButtonContainer>Continue Shopping </ButtonContainer>
 </Link>
 

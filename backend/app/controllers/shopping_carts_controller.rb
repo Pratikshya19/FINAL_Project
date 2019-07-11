@@ -1,5 +1,5 @@
 class ShoppingCartsController < ApplicationController
-    skip_before_action :check_authentication
+    skip_before_action :check_authentication, only: [:show]
 
 
 
@@ -11,8 +11,8 @@ class ShoppingCartsController < ApplicationController
     end
 
 
-    def show_cart
-        @total_price = 0.0
-        @cartItem = CartItem.find
-      end
+    # def show_cart
+    #     @total_price = 0.0
+    #     @cartItem = CartItem.find
+    #   end
 end

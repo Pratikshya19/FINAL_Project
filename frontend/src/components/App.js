@@ -10,11 +10,10 @@ import Cart from './Cart'
 import DefaultPage from './DefaultPage'
 import login from './login'
 import SignUp from './SignUp'
-// import Home from './Home'
-// import Routes from './Routes';
 import CartItemList from './CartItemList';
 import CheckoutForm from './CheckoutForm';
-// import {Elements, StripeProvider} from 'react-stripe-elements';
+import Home from './Home'
+import Searchbar from './Searchbar';
 
 export default class App extends Component {
   constructor(){
@@ -33,6 +32,19 @@ componentWillMount(){
   }
 }
 
+componentDidMount(){
+  fetch(`http://localhost:3000/items`)
+  .then(res => res.json())
+  .then(data => {
+     console.log(data)
+  this.setState({
+    paintings: data,
+    displaypaintings: data,
+   isLoading: false,})
+})
+}
+
+
 Search = (event) => {
   let value = event.target.value
   console.log(event.target.value)
@@ -43,7 +55,6 @@ Search = (event) => {
       || (item.artist.toLowerCase().includes(value.toLowerCase()))
       )
   })
-    
 }else{
   this.setState({displaypaintings:this.state.paintings})
   }}
@@ -64,18 +75,6 @@ this.setState({displaypaintings:x})
 
 }
 
- componentDidMount(){
-    fetch(`http://localhost:3000/items`)
-    .then(res => res.json())
-    .then(data => {
-       console.log(data)
-    this.setState({
-      paintings: data,
-      displaypaintings: data,
-      isLoading: false,})
-  })
-  }
-
   handleDetail = (painting) => {
     console.log("clicked:",painting.id)
   
@@ -86,46 +85,46 @@ this.setState({displaypaintings:x})
   }
   
 
-//   getItem = (id) => {
-//     const item = this.state.paintings.find(item => item.id === id)
-//     return item
-//   }
-
-// addTotal = () => {
-// let subtotal = 0;
-// // this.state.CartItems(item => (subtotal += ))
-// }
-
    render(){
     return(<div>
-      {/* <StripeProvider apiKey="pk_test_F2DSfJBqAcWxlGCvAj7eZSmJ006ANFkrys">
-      <h1>React Stripe Elements Example</h1>
-          <Elements>
-            <CheckoutForm />
-          </Elements>
 
+      <Navbar Search={this.Search} /> 
+  {/* <Filter filter={this.filter} />  */}
 
-      </StripeProvider> */}
-  <Navbar Search={this.Search} />
-  <Filter filter={this.filter} />
+{/* <Home displaypaintings={this.state.displaypaintingsdisplaypaintings}/>  */}
+
   <Switch>
- {/* <Route exact path="/" render={ () => <Home /> }/>  */}
+ <Route exact path="/" render={ () => <Home displaypaintings={this.state.displaypaintingsdisplaypaintings}/> }/> 
+
+ <Route path="/SignUp" component={SignUp} hideNavBar={true} />
+ <Route path="/login" component={login} />
+
+ {/* <Route path="/search" component={Searchbar}/> */}
 
 
-  <Route exact path="/" render={ () => <ItemList displaypaintings={this.state.displaypaintings} handleDetail={this.handleDetail} addToCart={this.addToCart}/> }/>
+ <Route path="/search" render={ () => <Searchbar Search={this.Search}/> } />
+
+ <Route path="/details" render={ () => <Details item={this.state.selecteditem} inCart={this.state.inCart}/> }/>
+ <Route path="/cart" component={Cart}/>
+ 
   
-  <Route path="/details" render={ () => <Details item={this.state.selecteditem} inCart={this.state.inCart} addToCart={this.addToCart}/> }/>
 
-  <Route path="/cart" component={Cart}/>
-  <Route path="/login" component={login} />
-  <Route path="/SignUp" component={SignUp} />
+ <ItemList displaypaintings={this.state.displaypaintings} handleDetail={this.handleDetail} filter={this.filter} item={this.state.selecteditem} />
+
+
+
+  {/* <Route exact path="/" render={ () => <ItemList displaypaintings={this.state.displaypaintings} handleDetail={this.handleDetail} addToCart={this.addToCart}/> }/> */}
+{/*   
+
+  <Route path="/details" render={ () => <Details item={this.state.selecteditem} inCart={this.state.inCart}/> }/> */}
+
+  
   <Route path="/CheckoutForm" component={CheckoutForm}/>
   {/* <Searchbar Search={this.Search}/> */}
   <Route component={DefaultPage}/>
   </Switch>
-  
  
-
+ 
     </div>)
   }
 }

@@ -6,7 +6,7 @@ import { Col, Button, Container } from 'reactstrap';
 export default class login extends Component {
     state = {
         name: "",
-        loggedIn: true
+        loggedIn: false
       };
   
 
@@ -40,9 +40,7 @@ export default class login extends Component {
         e.preventDefault()
          let name = e.target[0].value
          let password = e.target[1].value
-        //  debugger
-    
-            fetch('http://localhost:3000/login', {
+         fetch('http://localhost:3000/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -61,13 +59,12 @@ if (!data.error){
     localStorage.token = data.token;
     
     this.setState({
-        name: data.name
-    
+        name: data.name,
+        loggedIn: true
       });
-      
+
 }
-    
-           else {
+       else {
             console.log("error")
             this.setState({
               loginError: data.error})}
@@ -77,6 +74,7 @@ if (!data.error){
 
 handleClick(event) {
   localStorage.clear()
+
   event.preventDefault()
   this.setState({
       loggedIn: false
@@ -84,16 +82,13 @@ handleClick(event) {
 }
 
 
-
-
     render() {
         return(
 
  <Container>
-   
-        <Col sm="12" md={{ size: 6, offset: 3 }}>
-       
-      <form
+   {!this.state.loggedIn ? 
+     <Col sm="12" md={{ size: 4, offset: 3 }}>
+  <form
           className="form-signin lower-content"
            onSubmit={this.login}>
   <h1 className="h3 mb-3 font-weight-normal">Login</h1>
@@ -113,30 +108,31 @@ handleClick(event) {
               name="name"
               placeholder="Password"/>
             <br />
-
+      
             <Button
               className="btn btn-lg btn-primary btn-block white-button"
               type="submit">
               Log In
             </Button>
+            
           </form>
-
-          
-          {/* <div> */}
-          
           <br />
           Or <Link to="/Signup">Create Account</Link>
        
         </Col>
-      
+        : 
+       <button id="logout-btn" onClick={(event) => this.handleClick(event)}>Logout</button> 
+    
+   }
+   
         </Container>
-         
+      
     );
   }
 } 
 
 
-  //            <div>
+  {/* //            <div>
   //            <form onSubmit={this.login}>
   //                <input type="text" name="name" placeholder="Username"/>
   //      <input type="password" name="password" placeholder="Password"/>
@@ -144,5 +140,5 @@ handleClick(event) {
   //  </form>
   //  <Title name={this.state.name}/>
   //       </div> )}
-        
-  // }
+         */}
+  {/* // } */}

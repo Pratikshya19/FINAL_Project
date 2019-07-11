@@ -2,14 +2,23 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import Details from './Details';
+import 'semantic-ui-css/semantic.min.css'
+
 
 export default class Item extends Component {
 render() {
     console.log(this.props.item)
         return (
-<ItemWrapper className="col-9 mx-auto col-md-6 col-lg-3">
+
+<ItemWrapper className="col-1 mx-auto col-md-2        col-lg-4">
+{/* 
+    <div className="container">
+        <div className="row">
+
+        </div>
+    </div> */}
 <div className='card'>
-<div className="img-container p-5" onClick={() => this.props.handleDetail(this.props.item)}>
+<div className="img-container p-9" onClick={() => this.props.handleDetail(this.props.item)}>
 
 <Link to='/details'>
           
@@ -30,7 +39,7 @@ render() {
 </div>
 
             </ItemWrapper>
-    
+           
         )
     }
 }
@@ -39,7 +48,7 @@ render() {
 const ItemWrapper = styled.div `
 .card{
   
-    transition:all 1s linear;
+    transition:all 4s linear;
 }
 .card-footer{
     back-ground: transparent;
@@ -49,15 +58,15 @@ border:0.04re, solid rgba(0,0,0.2);
 
 }
 .main-border {
-    background-size: 100% 100%;
+    background-size: 90% 90%;
     height: 700px;
-    width: 650px;
+    width: 700px;
 margin-left: auto;
 margin-right: auto;
 }
 img{
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 90%;
+    max-height: 90%;
 }
 `
 
