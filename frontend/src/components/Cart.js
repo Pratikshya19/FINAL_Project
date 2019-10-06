@@ -36,7 +36,7 @@ fetch(`http://localhost:3000/customers/${parseInt(localStorage.customer)}/items`
 }
 
 
-```ruby
+
 removeitem = (id) => {
     console.log(`http://localhost:3000/customers/${parseInt(localStorage.customer)}/items/${id}`)
     fetch(`http://localhost:3000/customers/${parseInt(localStorage.customer)}/items/${id}`,
@@ -52,7 +52,7 @@ removeitem = (id) => {
         console.error(err)
      })
 }
-    ```
+    
 
 sum = () => {
     let counter = 0
